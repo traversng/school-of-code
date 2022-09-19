@@ -1,5 +1,5 @@
 import GraduationHat from './GraduationHat'
-import { Box, HStack, Icon, VStack, keyframes } from '@chakra-ui/react'
+import { Box, HStack, VStack, keyframes } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import { useEffect, useRef, useState } from 'react'
 
@@ -304,7 +304,7 @@ const SchoolOfCodeLogo: NextPage<SchoolOfCodeLogoProps> = ({
         fontSize={`1.3125rem`}
         lineHeight={`1.25rem`}
       >
-        SCHOOL OF CODE
+        ACADEMY
       </Box>
     </VStack>
   )

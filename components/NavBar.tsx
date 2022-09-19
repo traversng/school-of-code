@@ -2,10 +2,8 @@ import React from 'react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import {
-  Image,
   Box,
   Flex,
-  Button,
   Spacer,
   Link,
   IconButton,
@@ -16,23 +14,32 @@ import {
 } from '@chakra-ui/react'
 import HamburgerIcon from './HamburgerIcon'
 import SchoolOfCodeLogo from './SchoolOfCodeLogo'
+import { PomodoroTimer } from './PomodoroTimer'
 // import { ConnectButton } from '@rainbow-me/rainbowkit'
 
 function NavBar() {
   const router = useRouter()
-
   return (
     <Box>
       <Flex justify="left" alignItems="center">
         <Link variant="logo" href={'/'}>
-          <SchoolOfCodeLogo autoStart={true} loop={true} />
+          {router.pathname.endsWith('/[slug]') ? (
+            <SchoolOfCodeLogo />
+          ) : (
+            <SchoolOfCodeLogo autoStart={true} loop={true} />
+          )}
         </Link>
         <Spacer />
+        {/*
+                POMODORO TIMER
+          */}
+        {router.pathname.startsWith('/lessons') ? <PomodoroTimer /> : ''}
         <Box>
           {/*
                 MOBILE / HAMBURGER MENU
           */}
           <Flex
+            mt={6}
             alignItems="center"
             display={{ base: 'block', md: 'block', lg: 'none' }}
           >
@@ -41,6 +48,7 @@ function NavBar() {
                 as={IconButton}
                 aria-label="Options"
                 icon={<HamburgerIcon />}
+                ml={5}
                 variant="outline"
               />
               <MenuList backgroundColor={'soc.vividViolet'}>
@@ -91,6 +99,7 @@ function NavBar() {
                 DESKTOP VERSION
           */}
           <Flex
+            mt="6"
             alignItems="center"
             display={{ base: 'none', md: 'none', lg: 'block' }}
           >
